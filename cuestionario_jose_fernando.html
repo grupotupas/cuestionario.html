@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Entrenamientos</title>
+</head>
+<body>
+    <form action="https://webhooks.site" method="POST" enctype="multipart/form-data">
+        <!-- Campo oculto con nombre y apellidos del usuario -->
+        <input type="hidden" name="nombre_apellidos" value="John Doe">
+
+        <!-- Fieldset: Datos usuario -->
+        <fieldset>
+            <legend>Datos usuario</legend>
+
+            <label for="dni">DNI (*)</label>
+            <input type="text" id="dni" name="dni" maxlength="9" required>
+
+            <label for="nombre">Nombre y apellidos (*)</label>
+            <input type="text" id="nombre" name="nombre" maxlength="100" required>
+
+            <label for="password">Contraseña (*)</label>
+            <input type="password" id="password" name="password" minlength="5" maxlength="10" required>
+
+            <label for="telefono">Teléfono</label>
+            <input type="text" id="telefono" name="telefono" pattern="\d{3}-\d{2}-\d{2}-\d{2}">
+
+            <label for="email">Email (*)</label>
+            <input type="email" id="email" name="email" pattern="[a-zA-Z0-9._%+-]+@gmail\.com" required>
+        </fieldset>
+
+        <!-- Fieldset: Datos entrenamiento -->
+        <fieldset>
+            <legend>Datos entrenamiento</legend>
+
+            <label for="fecha">Fecha del entrenamiento (*)</label>
+            <input type="date" id="fecha" name="fecha" min="2024-01-01" max="2024-12-31" required>
+
+            <label for="imagenes">Imágenes del entrenamiento</label>
+            <input type="file" id="imagenes" name="imagenes[]" accept="image/jpeg" multiple>
+
+            <label for="rutina">Rutina de ejercicios</label>
+            <input type="file" id="rutina" name="rutina" accept="application/pdf">
+
+            <label for="salas">Salas utilizadas (*)</label>
+            <select id="salas" name="salas[]" multiple required>
+                <option value="pista_exterior">Pista exterior</option>
+                <option value="piscina">Piscina</option>
+                <option value="sala_musculacion">Sala de musculación</option>
+                <option value="sala_spinning">Sala de spinning</option>
+                <option value="sala_polivalente">Sala polivalente</option>
+                <option value="zona_cardio">Zona cardio</option>
+            </select>
+        </fieldset>
+
+        <!-- Fieldset: Rendimiento del entrenamiento -->
+        <fieldset>
+            <legend>Rendimiento del entrenamiento</legend>
+
+            <label for="agua">Cantidad de agua consumida (litros)</label>
+            <input type="number" id="agua" name="agua" step="0.1" value="0.5">
+
+            <label for="esfuerzo">Valoración del nivel de esfuerzo (*)</label>
+            <input type="range" id="esfuerzo" name="esfuerzo" min="1" max="10" required>
+
+            <label>Tipo de entrenamiento (*)</label>
+            <div>
+                <input type="radio" id="aerobico" name="tipo_entrenamiento" value="aerobico" required>
+                <label for="aerobico">Aeróbico</label>
+
+                <input type="radio" id="anaerobico" name="tipo_entrenamiento" value="anaerobico" required>
+                <label for="anaerobico">Anaeróbico</label>
+            </div>
+        </fieldset>
+
+        <!-- Botones de acción -->
+        <button type="submit">Enviar</button>
+        <button type="reset">Limpiar</button>
+    </form>
+</body>
+</html>
